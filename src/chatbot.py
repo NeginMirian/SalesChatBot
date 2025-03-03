@@ -31,7 +31,7 @@ template = PromptTemplate(
 
 #
 def query_huggingface(input_data):
-    """Queries the Hugging Face Inference API."""
+    """Queries the Hugging Face API."""
 
     # Convert LangChain output to a string
     if hasattr(input_data, 'to_string'):

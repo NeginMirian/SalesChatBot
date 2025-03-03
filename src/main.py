@@ -29,7 +29,7 @@ while True:
             _, stock_code, quantity = user_input.split()
             add_to_card(stock_code, int(quantity))
         except ValueError:
-            print("Invalid command format. Use: add STOCKCODE QUANTITY")
+            print("Invalid command format.")
 
     else:
         response, history = chat_with_bot(user_input, history)
