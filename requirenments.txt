@@ -1,0 +1,21 @@
+# Core libraries
+pandas
+numpy
+
+# LangChain & Retrieval-Augmented Generation (RAG)
+langchain
+faiss-cpu
+sentence-transformers
+openai  # If using GPT-3.5/4
+
+# Hugging Face Model & Embeddings
+transformers
+huggingface-hub
+
+
+# Web Framework (Optional for API Deployment)
+fastapi
+uvicorn
+
+# For running Jupyter Notebooks (Optional)
+jupyter
