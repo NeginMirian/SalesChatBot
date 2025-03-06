@@ -1,3 +1,4 @@
+
 Sales Assistant Chatbot
 This is a sales assistant chatbot that helps users find products, add them to a shopping cart, and chat with an AI-powered assistant. The chatbot can search for products, suggest similar items, and keep track of selected products in a cart.
 

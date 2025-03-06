@@ -20,7 +20,7 @@ embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-Mi
 
 # Create a FAISS vector
 vector_store = FAISS.from_documents(documents, embedding_model)
-# How FAISS Works:
+# FIASS is a facebook embedded db, How FAISS Works:
 # Stores vectors for all product descriptions.
 # When a user queries a product name, FAISS:
 # Embeds the query into a vector.
@@ -31,13 +31,15 @@ retriever = vector_store.as_retriever()
 
 def find_similar_products(query, top_n=5):
     """Retrieve top N most relevant products using RAG."""
-    retrieved_docs = retriever.get_relevant_documents(query)
+    # Use invoke instead of get_relevant_documents
+    retrieved_docs = retriever.invoke(query)  # Updated to use invoke
 
-# Convert retrieved docs(converts retrieved doc objects into a Pandas df)
+    # Convert retrieved docs to a pandas DataFrame
     product_list = [{"Description": doc.page_content, "StockCode": doc.metadata["StockCode"],
                      "UnitPrice": doc.metadata["UnitPrice"]} for doc in retrieved_docs[:top_n]]
 
     return pd.DataFrame(product_list)
+
 
 
 # #example
