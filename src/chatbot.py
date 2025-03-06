@@ -26,8 +26,10 @@ client = InferenceClient(
 # Define chatbot prompt template
 template = PromptTemplate(
     input_variables=["history", "input", "product_info"],
-    template="{history}\nUser: {input}\nAssistant: {product_info}\nAssistant (further response):"
+    template="You are a concise and helpful shopping assistant. Provide clear and relevant answers without unnecessary details don't countinue chat on behalf of user. \
+    If the user asks about a product, respond only with the name, price, and a brief description.\n\n{history}\nUser: {input}\nAssistant: {product_info}"
 )
+
 
 
 def query_huggingface(input_data):
