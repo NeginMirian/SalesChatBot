@@ -5,7 +5,10 @@ This sales assistant chatbot helps users find products, add them to a shopping c
 
 ## About the Dataset
 
-For this project, I chose the Online Retail dataset from Kaggle :DATA_URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx"
+For this project, I chose the Online Retail dataset from Kaggle :
+
+DATA_URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/00352/Online%20Retail.xlsx"
+
 The dataset contains real-world sales data from a UK-based online store, featuring stock codes for each product, descriptions of products, unit prices, and customer transactions. Since this dataset is rich in product information, it’s perfect for training a chatbot that can help users find relevant products.
 
 ## Project Overview
