@@ -26,8 +26,10 @@ client = InferenceClient(
 # Define chatbot prompt template
 template = PromptTemplate(
     input_variables=["history", "input", "product_info"],
-    template="You are a concise and helpful shopping assistant. Provide clear and relevant answers without unnecessary details don't countinue chat on behalf of user. \
-    If the user asks about a product, respond only with the name, price, and a brief description.\n\n{history}\nUser: {input}\nAssistant: {product_info}"
+    template="You are a concise and helpful shopping assistant. Provide clear and relevant answers without unnecessary details. \
+    Do NOT continue the chat on behalf of the user, and do NOT a lot of generate additional messages. \
+    If the user asks about a product, respond with the name, price, and a brief description. Do NOT assume further inquiries. \n\n\
+    {history}\nUser: {input}\nAssistant: {product_info}\n"
 )
 
 
@@ -56,8 +58,8 @@ def chat_with_bot(user_input, history=""):
     product_info = ""
 
     # Check if user input is related to products
-    if "product" in user_input.lower() or "buy" in user_input.lower() or "sneakers" in user_input.lower():
-        products = find_similar_products(user_input)  # Get relevant products
+    if "product" in user_input.lower() or "buy" in user_input.lower() or user_input.lower():
+        products = find_similar_products(user_input)
         product_info = products.to_string(index=False) if not products.empty else "No matching products found."
 
     # Update chat history
