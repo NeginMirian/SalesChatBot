@@ -19,3 +19,9 @@ Users can chat with the assistant to ask about products.
 The bot uses AI to understand queries and suggest relevant products.
 Users can add products to a shopping cart using simple commands.
 They can also view their cart before finalizing their purchase.
+
+## How to Use API 
+You should create an API token on Hugging Face website(same for openAI) and then add to an .env file, for security considerations add this file to git ignore.in the .env file you should have these variables:
+HUGGINGFACE_API_KEY=***
+OPENAI_API_KEY=***
+

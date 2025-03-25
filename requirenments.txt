@@ -7,15 +7,12 @@ langchain
 faiss-cpu
 sentence-transformers
 openai  # If using GPT-3.5/4
+langchain_core
+langchain_community
 
 # Hugging Face Model & Embeddings
 transformers
 huggingface-hub
-
-
-# Web Framework (Optional for API Deployment)
-fastapi
-uvicorn
 
 # For running Jupyter Notebooks (Optional)
 jupyter

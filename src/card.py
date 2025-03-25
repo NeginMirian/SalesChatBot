@@ -45,7 +45,7 @@ def view_card():
 
     print(f"\n Total: £{total:.2f}\n")
 
-# Example test
-if __name__ == "__main__":
-    add_to_card('85123A', 2)
-    view_card()
+# # Example test
+# if __name__ == "__main__":
+#     add_to_card('85123A', 2)
+#     view_card()

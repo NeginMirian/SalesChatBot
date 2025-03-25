@@ -31,7 +31,7 @@ retriever = vector_store.as_retriever()
 
 def find_similar_products(query, top_n=5):
     """Retrieve top N most relevant products using RAG."""
-    # Use invoke instead of get_relevant_documents
+    # Use invoke
     retrieved_docs = retriever.invoke(query)  # Updated to use invoke
 
     # Convert retrieved docs to a pandas DataFrame
