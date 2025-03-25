@@ -1,13 +1,14 @@
 import os
 import sys
 import dotenv
+from langchain_community.llms.openai import OpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
 from huggingface_hub import InferenceClient
 from langchain_huggingface import HuggingFaceEmbeddings
 from search_engine import find_similar_products
-from langchain_community.llms import OpenAI
-from langchain_community.chat_models.openai import ChatOpenAI
+# from langchain_community.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 # Load environment variables
 dotenv.load_dotenv()
 
@@ -35,9 +36,9 @@ template = PromptTemplate(
 )
 
 if OPENAI_API_KEY:
-    from langchain_community.chat_models import ChatOpenAI 
+    from langchain_openai import ChatOpenAI
 
-    llm = OpenAI(
+    llm = ChatOpenAI(
         api_key=OPENAI_API_KEY,
         model_name="gpt-3.5-turbo",
         temperature=0.3,
@@ -47,12 +48,8 @@ if OPENAI_API_KEY:
 
     def query_openai(input_data):
         """Queries the OpenAI API."""
-        # Convert input_data to a string if needed
-        if hasattr(input_data, 'to_string'):
-            input_text = input_data.to_string()
-        else:
-            input_text = str(input_data)
-        response = llm(input_text)
+        input_text = str(input_data)
+        response = llm.invoke(input_text)
         return response
 
 
@@ -71,12 +68,8 @@ elif HUGGINGFACE_API_KEY:
 
     def query_huggingface(input_data):
         """Queries the Hugging Face API."""
-        # Convert input_data to a string if needed
-        if hasattr(input_data, 'to_string'):
-            input_text = input_data.to_string()
-        else:
-            input_text = str(input_data)
-        response = client.text_generation(input_text, max_new_tokens=50, temperature=0.3)
+        input_text = str(input_data)
+        response = client.invoke(input_text, params={"max_new_tokens": 50, "temperature": 0.3})
         return response
 
 
@@ -104,7 +97,7 @@ def chat_with_bot(user_input, history=""):
         "history": history,
         "input": user_input,
         "product_info": product_info
-    }).strip()
+    }).content
 
     # Append the interaction to history
     history += f"{response}\n"
